@@ -17,7 +17,7 @@ class ConnectorTest extends TestCase
 
     public function testConnection()
     {
-        $connector = new Connector('INSERTKEY');
+        $connector = new Connector(env('KANBANIZE_KEY'));
 
         $response = $connector->requester('get_all_tasks', 50);
 

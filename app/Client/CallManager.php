@@ -17,7 +17,7 @@ class CallManager
 
     public function getAllTasks (int $boardid)
     {
-        $this->connector = new Connector('ubI24uKusVLCtsLPYdrzFi3ahYHN3TQTk7IVBLzl');
+        $this->connector = new Connector(env('KANBANIZE_KEY'));
 
         $response = $this->connector->requester(Calls::GET_ALL_TASKS, $boardid);
 
