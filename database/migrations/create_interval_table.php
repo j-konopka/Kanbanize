@@ -16,7 +16,7 @@ class createPeriodTable extends Migration
         Schema::create('interval', function (Blueprint $table) {
             $table->increments('id');
             $table->string('intervalType');
-            $table->integer('tage');
+            $table->integer('days');
         });
     }
 
