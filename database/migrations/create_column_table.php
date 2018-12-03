@@ -14,10 +14,11 @@ class createColumnTable extends Migration
     public function up()
     {
         Schema::create('column', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('columnName');
+            $table->increments('id'); // PK
             $table->string('nameIntern');
-            $table->integer('boardId');
+            $table->string('columnName');
+            $table->integer('boardId'); // FK
+            $table->timestamps();
         });
     }
 

@@ -13,13 +13,11 @@ class createStatisticSettings extends Migration
      */
     public function up()
     {
-        Schema::create('statistic_settings', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('boardId');
-            $table->integer('periodId');
-            $table->integer('variationId');
-            $table->integer('intervalId');
+        Schema::create('statistic_chart', function (Blueprint $table) {
+            $table->increments('id'); // PK
+            $table->integer('boardId'); // FK
             $table->text('settings');
+            $table->timestamps();
         });
     }
 
@@ -30,7 +28,7 @@ class createStatisticSettings extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('statistic_settings');
+        Schema::dropIfExists('statistic_chart');
     }
 
 }

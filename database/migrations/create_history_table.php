@@ -14,10 +14,11 @@ class createHistoryTable extends Migration
     public function up()
     {
         Schema::create('history', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id'); // PK
             $table->timestamp('date');
-            $table->string('boardId');
+            $table->string('boardId'); // FK
             $table->integer('newBugs');
+            $table->timestamps();
         });
     }
 
