@@ -11,6 +11,7 @@ namespace App\Client;
 
 class Calls
 {
-    const GET_ALL_TASKS = 'get_all_tasks';
-    
+    const GET_ALL_TASKS = 'get_all_tasks/format/json';
+    const GET_ALL_PROJECTS_AND_BOARDS = 'get_projects_and_boards/format/json';
+
 }
