@@ -13,11 +13,13 @@ class createBoardTable extends Migration
      */
     public function up()
     {
-        Schema::create('board', function (Blueprint $table) {
+        Schema::create('boards', function (Blueprint $table) {
             $table->increments('id'); // PK
             $table->integer('boardId');
             $table->string('boardName');
             $table->timestamps();
+
+            $table->primary('id');
         });
     }
 
@@ -28,7 +30,7 @@ class createBoardTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('board');
+        Schema::dropIfExists('boards');
     }
 
 }

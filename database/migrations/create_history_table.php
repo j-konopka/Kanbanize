@@ -19,6 +19,12 @@ class createHistoryTable extends Migration
             $table->string('boardId'); // FK
             $table->integer('newBugs');
             $table->timestamps();
+
+            $table->primary('id');
+            $table->foreign('boardId')
+                ->references('id')
+                ->on('boards')
+                ->onDelete('restrict');
         });
     }
 

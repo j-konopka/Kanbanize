@@ -18,6 +18,12 @@ class createStatisticSettings extends Migration
             $table->integer('boardId'); // FK
             $table->text('settings');
             $table->timestamps();
+
+            $table->primary('id');
+            $table->foreign('boardId')
+                ->references('id')
+                ->on('boards')
+                ->onDelete('restrict');
         });
     }
 

@@ -19,6 +19,12 @@ class createColumnTable extends Migration
             $table->string('columnName');
             $table->integer('boardId'); // FK
             $table->timestamps();
+
+            $table->primary('id');
+            $table->foreign('boardId')
+                ->references('id')
+                ->on('boards')
+                ->onDelete('restrict');
         });
     }
 
