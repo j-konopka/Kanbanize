@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class createHistoryTable extends Migration
+class CreateColumnTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class createHistoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('history', function (Blueprint $table) {
+        Schema::create('column', function (Blueprint $table) {
             $table->increments('id'); // PK
-            $table->timestamp('date');
-            $table->string('boardId'); // FK
-            $table->integer('newBugs');
+            $table->string('nameIntern');
+            $table->string('columnName');
+            $table->unsignedInteger('boardId'); // FK
             $table->timestamps();
 
-            $table->primary('id');
             $table->foreign('boardId')
                 ->references('id')
                 ->on('boards')
@@ -35,7 +34,6 @@ class createHistoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('history');
+        Schema::dropIfExists('column');
     }
-
 }

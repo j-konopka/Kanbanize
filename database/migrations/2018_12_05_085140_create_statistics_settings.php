@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class createStatisticSettings extends Migration
+class CreateStatisticsSettings extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class createStatisticSettings extends Migration
      */
     public function up()
     {
-        Schema::create('statistic_chart', function (Blueprint $table) {
+        Schema::create('statistics_settings', function (Blueprint $table) {
             $table->increments('id'); // PK
-            $table->integer('boardId'); // FK
+            $table->unsignedInteger('boardId'); // FK
             $table->text('settings');
             $table->timestamps();
 
-            $table->primary('id');
             $table->foreign('boardId')
                 ->references('id')
                 ->on('boards')
@@ -34,7 +33,6 @@ class createStatisticSettings extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('statistic_chart');
+        Schema::dropIfExists('statistics_settings');
     }
-
 }
