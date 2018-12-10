@@ -23,7 +23,7 @@ class Connector
         $this->auth = $key;
     }
 
-    public function requester (string $endpoint, string $boardid)
+    public function requester (string $endpoint, array $bodyRequest)
     {
         $client = new Client();
 
@@ -35,7 +35,7 @@ class Connector
                 ],
                 // TODO: Json als Array ersetzen um Dynamik reinzubringen
                 'json' => [
-                    'boardid' => $boardid
+                    $bodyRequest
                 ]
             ]);
 

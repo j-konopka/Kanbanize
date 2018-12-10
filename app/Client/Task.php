@@ -23,7 +23,7 @@ class Task
     /**
      * @return mixed
      */
-    public function getId()
+    public function getId():int
     {
         return $this->id;
     }
@@ -39,7 +39,7 @@ class Task
     /**
      * @return mixed
      */
-    public function getAssignee()
+    public function getAssignee():string
     {
         return $this->assignee;
     }
@@ -55,7 +55,7 @@ class Task
     /**
      * @return mixed
      */
-    public function getTitle()
+    public function getTitle():string
     {
         return $this->title;
     }
@@ -71,7 +71,7 @@ class Task
     /**
      * @return mixed
      */
-    public function getColumnid()
+    public function getColumnid():int
     {
         return $this->columnid;
     }
@@ -87,7 +87,7 @@ class Task
     /**
      * @return mixed
      */
-    public function getLaneid()
+    public function getLaneid():string
     {
         return $this->laneid;
     }
@@ -103,7 +103,7 @@ class Task
     /**
      * @return mixed
      */
-    public function getCreatedat()
+    public function getCreatedat():string
     {
         return $this->createdat;
     }
@@ -119,7 +119,7 @@ class Task
     /**
      * @return mixed
      */
-    public function getUpdatedat()
+    public function getUpdatedat():string
     {
         return $this->updatedat;
     }
@@ -135,7 +135,7 @@ class Task
     /**
      * @return mixed
      */
-    public function getDays()
+    public function getDays():int
     {
         return $this->days;
     }
