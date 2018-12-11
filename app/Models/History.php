@@ -8,16 +8,18 @@ class History extends Model
 {
     private $table = 'history';
 
-    private function boards()
+    public $fillable = [
+        'id',
+        'date',
+        'boardId',
+        'newBugs'
+    ];
+
+
+    public function boards()
     {
         return $this->hasOne(Boards::class, 'id', 'boardId');
     }
 
-    protected $fillable = [
-        'id',
-        'date',
-        'boardId',
-        'newBugs',
-    ];
 
 }

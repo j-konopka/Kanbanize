@@ -18,7 +18,7 @@ class CallManagerTest extends TestCase
 
     public function testGetAllTasks()
     {
-        $callMngr = new CallManager();
+        $callMngr = new CallManager(env('KANBANIZE_KEY'));
 
         $boardid = 50;
         $tasks[] = $callMngr->getAllTasks($boardid);

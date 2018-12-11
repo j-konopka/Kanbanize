@@ -8,15 +8,15 @@ class Statistics extends Model
 {
     private $table = 'statistics';
 
-    private function boards()
+
+    public $fillable = [
+        'id',
+        'boardId',
+        'settings'
+    ];
+
+    public function boards()
     {
         return $this->hasOne(Boards::class, 'id', 'boardId');
     }
-
-    protected $fillable = [
-        'id',
-        'boardId',
-        'settings',
-    ];
-
 }

@@ -15,10 +15,14 @@ class CallManager
 {
     private $connector;
 
+    public function __construct($apikey)
+    {
+        $this->connector = new Connector($apikey);
+    }
+
     public function getAllTasks (int $boardid)
     {
-        $this->connector = new Connector(env('KANBANIZE_KEY'));
-        $bodyRequest['boardid'] = 50;
+        $bodyRequest['boardid'] = $boardid;
 
         $response = $this->connector->requester(Calls::GET_ALL_TASKS, $bodyRequest);
 
@@ -49,7 +53,6 @@ class CallManager
 
     public function getAllBoards()
     {
-        $this->connector = new Connector(env('KANBANIZE_KEY'));
         $response = $this->connector->requester(Calls::GET_ALL_PROJECTS_AND_BOARDS, array());
 
         if ($response->getStatusCode() == 200)

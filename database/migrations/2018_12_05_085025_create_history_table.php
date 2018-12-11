@@ -18,6 +18,9 @@ class CreateHistoryTable extends Migration
             $table->timestamp('date');
             $table->unsignedInteger('boardId'); // FK
             $table->integer('newBugs');
+            $table->integer('open');
+            $table->integer('doing');
+            $table->integer('done');
             $table->timestamps();
 
             $table->foreign('boardId')

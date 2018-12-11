@@ -12,6 +12,7 @@ namespace App\DatabaseModels;
 class Task
 {
     private $id;
+    private $boardparent;
     private $assignee;
     private $title;
     private $columnid;
@@ -34,6 +35,22 @@ class Task
     public function setId($id): void
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBoardparent():int
+    {
+        return $this->boardparent;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setBoardparent($boardparent): void
+    {
+        $this->boardparent = $boardparent;
     }
 
     /**

@@ -8,7 +8,7 @@ class Boards extends Model
 {
     private $table = 'boards';
 
-    protected $fillable = [
+    public $fillable = [
         'id',
         'boardId',
         'boardName'
