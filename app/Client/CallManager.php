@@ -1,18 +1,19 @@
 <?php
 /**
  * Created by IntelliJ IDEA.
- * User: ilyestascou
- * Date: 30.11.18
- * Time: 10:39
+ * UserModel: ilyestascou
+ * Date: 28.11.18
+ * Time: 15:21
  */
 
 namespace App\Client;
 
 
-use App\DatabaseModels\Task;
+use App\KanbanizeElements\Task;
 
 class CallManager
 {
+
     private $connector;
 
     public function __construct($apikey)
@@ -20,10 +21,9 @@ class CallManager
         $this->connector = new Connector($apikey);
     }
 
-    public function getAllTasks (int $boardid)
+    public function getAllTasks (int $boardID)
     {
-        $bodyRequest['boardid'] = $boardid;
-
+        $bodyRequest['boardid'] = $boardID;
         $response = $this->connector->requester(Calls::GET_ALL_TASKS, $bodyRequest);
 
         if ($response->getStatusCode() == 200)
@@ -33,44 +33,46 @@ class CallManager
 
             foreach ($data as $dTask)
             {
-                $t = new Task();
+                $tmpTask = new Task();
 
-                $t->setId($dTask->taskid);
-                $t->setAssignee($dTask->assignee);
-                $t->setTitle($dTask->title);
-                $t->setColumnid($dTask->columnid);
-                $t->setLaneid($dTask->laneid);
-                $t->setCreatedat($dTask->createdat);
-                $t->setUpdatedat($dTask->updatedat);
-                $t->setDays($dTask->leadtime);
+                $tmpTask->setBoardID($dTask->boardparent);
 
-                $taskList[] = $t;
+                $tmpTask->setColumnID($dTask->columnid);
+                $tmpTask->setColumnName($dTask->columnname);
+
+                $tmpTask->setId($dTask->taskid);
+                $tmpTask->setAssignee($dTask->assignee);
+                $tmpTask->setTitle($dTask->title);
+                $tmpTask->setLaneid($dTask->laneid);
+                $tmpTask->setCreatedat($dTask->createdat);
+                $tmpTask->setUpdatedat($dTask->updatedat);
+                $tmpTask->setDays($dTask->leadtime);
+
+                $taskList[] = $tmpTask;
             }
+           // dd($this->taskFilterTime($taskList));
             return $taskList;
         }
-        return null;
+
     }
 
-    public function getAllBoards()
+    /*public function taskFilterTime ($taskList)
     {
-        $response = $this->connector->requester(Calls::GET_ALL_PROJECTS_AND_BOARDS, array());
-
-        if ($response->getStatusCode() == 200)
+        $filtered = [];
+        foreach ($taskList as $task)
         {
-            $data = json_decode($response->getBody());
-            $boardList = [];
-
-            foreach ($data as $dBoard)
+            if ($task->getDays() <= 14)
             {
-                $board = new Board(
-                    $dBoard->id,
-                    $dBoard->name
-                );
-
-                $boardList[] = $board;
+                // Backlog, Bug2Feature-Lane und Refactoring wird nicht mit gezaehlt
+                if ($task->getColumnID() != 'backlog_632_1858' && $task->getColumnID() != 'backlog_632_1859')
+                {
+                    $filtered[] = $task;
+                }
             }
-            return $boardList;
         }
-        return null;
-    }
+
+        return $filtered;
+    }*/
+
+
 }

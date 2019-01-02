@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by IntelliJ IDEA.
- * User: ilyestascou
- * Date: 30.11.18
- * Time: 10:27
+ * UserModel: ilyestascou
+ * Date: 28.11.18
+ * Time: 14:38
  */
 
 namespace App\Client;
@@ -17,15 +17,16 @@ class Connector
 
     private $auth;
 
-
-    public function __construct(string $key)
+    public function __construct($auth)
     {
-        $this->auth = $key;
+        $this->auth = $auth;
     }
 
-    public function requester (string $endpoint, array $bodyRequest)
+    public function requester ($endpoint, $bodyRequest)
     {
         $client = new Client();
+
+        //$bodyRequest = array('boardid' => 50);
 
         $request = $client->request('POST', self::URL . $endpoint . '/format/json/',
             [
@@ -33,12 +34,27 @@ class Connector
                     'apikey' => $this->auth,
                     'content-type' => 'application/json'
                 ],
-                // TODO: Json als Array ersetzen um Dynamik reinzubringen
                 'json' => [
-                    $bodyRequest
+                    'boardid' => '50'
                 ]
-            ]);
+        ]);
+
+
 
         return $request;
+
+        // Board 50
+        // "Open"-Lane 633
+        // "In Prog"-Lane 634
+        // "Done"-Lane 640
     }
+
+
+
+
+
+
+
+
+
 }

@@ -1,55 +1,32 @@
 <?php
 /**
  * Created by IntelliJ IDEA.
- * User: ilyestascou
- * Date: 2018-12-05
- * Time: 11:27
+ * UserModel: ilyestascou
+ * Date: 2018-12-17
+ * Time: 17:42
  */
 
-namespace App\Client;
+namespace App\KanbanizeElements;
 
 
 class Board
 {
-    private $id;
-    private $name;
-
-    public function __construct(int $id, string $name)
-    {
-        $this->id = $id;
-        $this->name = $name;
-    }
+    private $boardID;
 
     /**
      * @return mixed
      */
-    public function getId():int
+    public function getBoardID()
     {
-        return $this->id;
+        return $this->boardID;
     }
 
     /**
-     * @param mixed $id
+     * @param mixed $boardID
      */
-    public function setId($id): void
+    public function setBoardID($boardID): void
     {
-        $this->id = $id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getName():string
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param mixed $name
-     */
-    public function setName($name): void
-    {
-        $this->name = $name;
+        $this->boardID = $boardID;
     }
 
 

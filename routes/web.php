@@ -12,9 +12,20 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+//    $cm = new \App\Cron();
+//
+//    $cm->interativeCronStart();
+
+
+
+
+    return view('home2');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/', 'ChartController@buildChart')->name('home');
+Route::get('/charts', 'ChartController@buildChart')->name('home');
