@@ -58,12 +58,12 @@ class Cron
 
     public function insertTestData()
     {
-        $settings = array(
+        $settings = [
             'open' => ['requested_633'],
             'doing' => ['progress_634_709', 'progress_634_710', 'progress_707', 'progress_708', 'progress_1860'],
             'done' => ['done_635'],
             'days' => 14,
-        );
+        ];
         SettingsManager::saveSettingsTest($settings);
     }
 
