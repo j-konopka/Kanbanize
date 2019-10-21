@@ -31,10 +31,10 @@ class SettingsManager
     {
         $statistic = StatisticModel::find($id);
 
-        $settings = array(
+        $settings = [
             'boardID' => $statistic->board_external_id,
             'settings' => unserialize($statistic->settings)
-        );
+        ];
 
         return $settings;
     }
