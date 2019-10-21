@@ -15,10 +15,8 @@ class Filter
     public static function filterForDays($taskList, $days)
     {
         $filtered = [];
-        foreach ($taskList as $task)
-        {
-            if ($task->getDays() <= $days)
-            {
+        foreach ($taskList as $task) {
+            if ($task->getDays() <= $days) {
                 $filtered[] = $task;
             }
         }
@@ -29,12 +27,9 @@ class Filter
     public static function filterForLanes($taskList, $laneIDList)
     {
         $filtered = [];
-        foreach ($taskList as $task)
-        {
-            foreach ($laneIDList as $laneID)
-            {
-                if ($task->getColumnID() == $laneID)
-                {
+        foreach ($taskList as $task) {
+            foreach ($laneIDList as $laneID) {
+                if ($task->getColumnID() == $laneID) {
                     $filtered[] = $task;
                 }
             }
