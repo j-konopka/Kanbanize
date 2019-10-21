@@ -28,12 +28,12 @@ class Evaluation
         $newBugs += count(Filter::filterForDays($done, $days));
 
 
-        $results = array(
+        $results = [
             'open' => $open,
             'doing' => $doing,
             'done' => $done,
             'new' => $newBugs,
-        );
+        ];
 
         return $results;
     }
